@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ══════════════════════════════════════════════
+   BLACK & WHITE THEME
+══════════════════════════════════════════════ */
+:root {
+  /* ── Pure tones ── */
+  --black:     #000000;
+  --near-black:#0a0a0a;
+  --dark-1:    #111111;
+  --dark-2:    #1a1a1a;
+  --dark-3:    #222222;
+  --dark-4:    #2e2e2e;
+  --dark-5:    #3a3a3a;
+  --mid-grey:  #767676;
+  --light-4:   #b2b2b2;
+  --light-3:   #d4d4d4;
+  --light-2:   #e8e8e8;
+  --light-1:   #f4f4f4;
+  --white:     #ffffff;
+
+  /* ── Section backgrounds (alternating dark / light) ── */
+  --bg-dark:   var(--near-black);   /* hero, map  */
+  --bg-mid:    var(--dark-2);       /* footer     */
+  --bg-light:  var(--light-1);      /* gadgets    */
+  --bg-card-dark:  var(--dark-3);   /* cards on dark sections */
+  --bg-card-light: var(--white);    /* cards on light sections */
+
+  /* ── Text on dark bg ── */
+  --tx-dark-primary:  var(--white);
+  --tx-dark-secondary:var(--light-2);
+  --tx-dark-muted:    var(--light-4);
+  --tx-dark-dim:      var(--mid-grey);
+
+  /* ── Text on light bg ── */
+  --tx-light-primary:  var(--near-black);
+  --tx-light-secondary:var(--dark-2);
+  --tx-light-muted:    var(--dark-4);
+  --tx-light-dim:      var(--mid-grey);
+
+  /* ── Borders ── */
+  --br-dark:   rgba(255,255,255,0.1);
+  --br-dark-mid:rgba(255,255,255,0.18);
+  --br-light:  rgba(0,0,0,0.1);
+  --br-light-mid:rgba(0,0,0,0.18);
+
+  /* ── Shadows ── */
+  --sh-sm: 0 2px 8px  rgba(0,0,0,0.35);
+  --sh-md: 0 6px 24px rgba(0,0,0,0.45);
+  --sh-lg: 0 16px 48px rgba(0,0,0,0.55);
+  --sh-xl: 0 32px 80px rgba(0,0,0,0.65);
+
+  /* ── Misc ── */
+  --ease:  cubic-bezier(0.4, 0, 0.2, 1);
+  --tr:    0.24s;
+  --font:  'Inter', system-ui, -apple-system, sans-serif;
+  --nav-h: 58px;
+  --r-sm:  5px;
+  --r-md:  10px;
+  --r-lg:  18px;
+  --r-xl:  26px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg-dark);
+  color: var(--tx-dark-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img  { max-width: 100%; height: auto; display: block; }
+a    { text-decoration: none; color: inherit; }
+ul   { list-style: none; }
+button { cursor: pointer; font-family: var(--font); border: none; background: none; }
+
+/* ── LAYOUT ── */
+.container {
+  width: 100%; max-width: 1200px;
+  margin: 0 auto; padding: 0 40px;
+}
+@media (max-width: 768px) { .container { padding: 0 20px; } }
+
+/* ── TYPOGRAPHY UTILITIES ── */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.section-heading {
+  font-size: clamp(26px, 3.6vw, 44px);
+  font-weight: 800; letter-spacing: -.03em;
+  line-height: 1.1;
+}
+.section-body {
+  font-size: 15px; line-height: 1.74;
+  max-width: 500px; margin-top: 10px;
+}
+
+/* on dark sections */
+.on-dark .section-eyebrow { color: var(--tx-dark-dim); }
+.on-dark .section-heading  { color: var(--tx-dark-primary); }
+.on-dark .section-body     { color: var(--tx-dark-muted); }
+
+/* on light sections */
+.on-light .section-eyebrow { color: var(--tx-light-dim); }
+.on-light .section-heading  { color: var(--tx-light-primary); }
+.on-light .section-body     { color: var(--tx-light-muted); }
+
+/* ── BUTTON SYSTEM ── */
+.btn {
+  display: inline-flex; align-items: center;
+  justify-content: center; gap: 8px;
+  font-family: var(--font);
+  font-size: 13.5px; font-weight: 600;
+  padding: 11px 26px; border-radius: 99px;
+  transition: transform var(--tr) var(--ease),
+              box-shadow var(--tr) var(--ease),
+              background var(--tr) var(--ease),
+              color var(--tr) var(--ease);
+  cursor: pointer; border: none;
+  white-space: nowrap; letter-spacing: .01em;
+}
+
+/* white filled — used on dark sections */
+.btn-white {
+  background: var(--white); color: var(--near-black);
+}
+.btn-white:hover {
+  background: var(--light-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,255,255,0.15);
+}
+
+/* white outlined — used on dark sections */
+.btn-outline-white {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.35);
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.7);
+  transform: translateY(-2px);
+}
+
+/* black filled — used on light sections */
+.btn-black {
+  background: var(--near-black); color: var(--white);
+}
+.btn-black:hover {
+  background: var(--black);
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+}
+
+/* black outlined — used on light sections */
+.btn-outline-black {
+  background: transparent; color: var(--near-black);
+  border: 1.5px solid rgba(0,0,0,0.25);
+}
+.btn-outline-black:hover {
+  background: var(--near-black);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* ── LOADING SCREEN ── */
+.store-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--black);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 22px;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+.store-loader--out {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.store-loader__logo {
+  font-size: 24px; font-weight: 900;
+  letter-spacing: .22em; color: var(--white);
+  animation: loadPulse 1.4s ease infinite;
+}
+.store-loader__bar {
+  width: 120px; height: 1.5px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px; overflow: hidden;
+}
+.store-loader__fill {
+  height: 100%; background: var(--white);
+  border-radius: 2px;
+  animation: loadFill 1.4s ease forwards;
+}
+
+/* ── BACK TO TOP ── */
+#back-to-top {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  background: var(--white); color: var(--near-black);
+  border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.15);
+  z-index: 900; cursor: pointer;
+  opacity: 0; visibility: hidden;
+  transform: translateY(10px) scale(.9);
+  transition: opacity .3s, transform .3s, visibility .3s;
+}
+#back-to-top.show { opacity: 1; visibility: visible; transform: none; }
+#back-to-top:hover {
+  background: var(--light-2);
+  transform: translateY(-3px) scale(1.06);
+}
+@media (max-width: 768px) {
+  #back-to-top { bottom: 18px; right: 14px; }
+}

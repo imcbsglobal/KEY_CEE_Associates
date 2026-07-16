@@ -1,0 +1,3 @@
+/* Entry-point CSS — imports every global stylesheet */
+@import './styles/globals.css';
+@import './styles/animations.css';

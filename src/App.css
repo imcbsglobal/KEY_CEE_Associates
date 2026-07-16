@@ -1,0 +1,5 @@
+/* App.css — intentionally minimal.
+   All section styles live in their own component CSS files.
+   Global tokens/reset live in styles/globals.css            */
+
+main { flex: 1; width: 100%; }

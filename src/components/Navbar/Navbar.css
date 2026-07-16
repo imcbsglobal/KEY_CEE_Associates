@@ -1,0 +1,151 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h); z-index: 800;
+  display: flex; align-items: center;
+  padding: 0 40px; gap: 40px;
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--br-dark);
+  transition: background .3s var(--ease), box-shadow .3s;
+}
+.navbar.solid {
+  background: rgba(10,10,10,0.96);
+  box-shadow: 0 1px 0 var(--br-dark), var(--sh-sm);
+}
+
+.navbar__logo {
+  user-select: none; cursor: pointer;
+  flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0px;
+}
+.navbar__logo-samsung {
+  font-size: 13px; font-weight: 800;
+  letter-spacing: .14em; color: var(--white);
+  line-height: 1.1;
+}
+.navbar__logo-row2 { line-height: 1; }
+.navbar__logo-experience {
+  font-size: 19px; font-weight: 300;
+  letter-spacing: .06em; color: var(--white);
+  line-height: 1.1;
+}
+.navbar__logo-row3 {
+  display: flex; align-items: center; gap: 6px; width: 100%;
+}
+.navbar__logo-line {
+  flex: 1; height: 1px; background: rgba(255,255,255,0.55);
+  max-width: 72px;
+}
+.navbar__logo-store {
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: .18em; color: var(--white);
+}
+
+.navbar__links {
+  display: flex; align-items: center; gap: 2px;
+  flex: 1; justify-content: center;
+}
+.navbar__link {
+  font-size: 13.5px; font-weight: 500;
+  color: var(--tx-dark-muted); padding: 7px 15px;
+  border-radius: 99px; cursor: pointer;
+  transition: color var(--tr), background var(--tr);
+  position: relative;
+}
+.navbar__link:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.08);
+}
+.navbar__link.active {
+  color: var(--white); font-weight: 600;
+}
+.navbar__link.active::after {
+  content: '';
+  position: absolute; bottom: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  background: var(--white); border-radius: 50%;
+}
+
+.navbar__cta {
+  margin-left: auto; flex-shrink: 0;
+  display: flex; align-items: center;
+}
+.navbar__associate {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 0; cursor: default; user-select: none;
+}
+.navbar__assoc-key {
+  font-size: 13px; font-weight: 800;
+  letter-spacing: .14em; color: var(--white);
+  line-height: 1.1;
+}
+.navbar__assoc-row2 { line-height: 1; }
+.navbar__assoc-associates {
+  font-size: 19px; font-weight: 300;
+  letter-spacing: .06em; color: var(--white);
+  line-height: 1.1;
+}
+.navbar__assoc-row3 {
+  display: flex; align-items: center; gap: 6px; width: 100%;
+}
+.navbar__assoc-line {
+  flex: 1; height: 1px; background: rgba(255,255,255,0.55);
+  max-width: 72px;
+}
+.navbar__assoc-tag {
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: .18em; color: var(--white);
+}
+
+/* hamburger */
+.navbar__ham {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 8px; margin-left: auto; cursor: pointer;
+}
+.navbar__ham span {
+  display: block; width: 20px; height: 1.5px;
+  background: var(--white); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.navbar__ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.navbar__ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.navbar__ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* mobile drawer */
+.navbar__drawer {
+  position: fixed; top: var(--nav-h); right: 0; bottom: 0;
+  width: 270px;
+  background: var(--dark-1);
+  border-left: 1px solid var(--br-dark);
+  box-shadow: var(--sh-xl);
+  transform: translateX(100%);
+  transition: transform .3s var(--ease);
+  z-index: 799; display: flex; flex-direction: column;
+  padding: 16px 0;
+}
+.navbar__drawer.open { transform: none; }
+
+.navbar__drawer-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 15px 24px; font-size: 15px; font-weight: 500;
+  color: var(--tx-dark-secondary); cursor: pointer;
+  border-bottom: 1px solid var(--br-dark);
+  transition: var(--tr);
+}
+.navbar__drawer-link:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.06);
+}
+
+.navbar__overlay {
+  position: fixed; inset: 0; top: var(--nav-h);
+  background: rgba(0,0,0,0.6); z-index: 798;
+}
+
+@media (max-width: 840px) {
+  .navbar__links, .navbar__cta { display: none; }
+  .navbar__ham { display: flex; }
+  .navbar { padding: 0 20px; }
+}
