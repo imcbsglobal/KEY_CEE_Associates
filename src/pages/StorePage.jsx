@@ -4,6 +4,7 @@ import '../App.css';
 import Navbar          from '../components/Navbar/Navbar';
 import HeroSection     from '../components/HeroSection/HeroSection';
 import GadgetsSection  from '../components/GadgetsSection/GadgetsSection';
+import Help            from '../components/Help/Help';
 import MapSection      from '../components/MapSection/MapSection';
 import Footer          from '../components/Footer/Footer';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -75,6 +76,7 @@ export default function StorePage() {
       <main id="main-content">
         <HeroSection />
         <GadgetsSection />
+        <Help />
         <MapSection />
       </main>
 
@@ -84,4 +86,3 @@ export default function StorePage() {
   );
 }
 
-{/* <BackToTop /> */}

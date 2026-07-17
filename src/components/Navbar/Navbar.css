@@ -145,7 +145,14 @@
 }
 
 @media (max-width: 840px) {
-  .navbar__links, .navbar__cta { display: none; }
+  .navbar__links { display: none; }
   .navbar__ham { display: flex; }
   .navbar { padding: 0 20px; }
+  .navbar__cta { margin-left: 0; }
+  .navbar__assoc-key { font-size: 11px; }
+  .navbar__assoc-associates { font-size: 16px; }
+  .navbar__logo-samsung { font-size: 9px; }
+  .navbar__logo-experience { font-size: 13px; }
+  .navbar__logo-store { font-size: 6px; }
+  .navbar__logo-line { max-width: 48px; }
 }

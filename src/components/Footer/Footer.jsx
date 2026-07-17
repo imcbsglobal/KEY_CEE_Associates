@@ -29,6 +29,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <div className="footer__logo">
+              <img src="/Logo.png" alt="Key Cee Associates" className="footer__logo-img" />
               <div className="footer__logo-wordmark">
                 <span className="footer__logo-samsung">SAMSUNG</span>
                 <span className="footer__logo-experience">EXPERIENCE</span>
@@ -37,7 +38,6 @@ export default function Footer() {
                   <span className="footer__logo-store">STORE</span>
                 </div>
               </div>
-              <img src="/logo.jpeg" alt="Samsung Experience Store" className="footer__logo-img" />
             </div>
             <p className="footer__tagline">
               

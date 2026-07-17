@@ -69,9 +69,9 @@ export default function GadgetsSection() {
         <div className="gadgets__head on-light">
           <div className="sr-up">
             <p className="section-eyebrow">What We Carry</p>
-            <h2 id="gadgets-heading" className="section-heading">Gadgets In Store</h2>
+            <h2 id="gadgets-heading" className="section-heading">Explore the Samsung Galaxy Lineup</h2>
             <p className="section-body">
-              Every Samsung series on display. Try them live, get expert advice, and walk out with the right device.
+             Discover the latest Galaxy smartphones, foldables, tablets, laptops, Galaxy Watches, Buds, Ring, Samsung Care+, and genuine Samsung accessories—all available for hands-on experience, expert guidance, and exclusive in-store offers.
             </p>
           </div>
         </div>

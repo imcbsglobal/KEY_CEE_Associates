@@ -101,3 +101,32 @@
   .map-iframe { height: 320px; }
 }
 @media (max-width: 768px) { .mapsec { padding: 72px 0; } }
+
+/* WhatsApp / phone link inside info tile */
+.info-tile__link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.3);
+  transition: color .2s, text-decoration-color .2s;
+}
+.info-tile__link:hover {
+  color: #25d366;
+  text-decoration-color: #25d366;
+}
+
+/* entire tile is a link */
+.info-tile--link {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.info-tile--link:hover {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.3);
+}
+.info-tile--link:hover .info-tile__val {
+  color: #25d366;
+}

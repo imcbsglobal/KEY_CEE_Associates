@@ -7,8 +7,9 @@ const INFO_TILES = [
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
   },
   {
-    label: 'Phone', val: '7034119944 / 8078225300',
-    sub: 'Mon–Sun · 10:30 AM – 10 PM',
+    label: 'Phone',
+    val: '7034119944 / 8078225300',
+    href: 'https://wa.me/917034119944',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.17h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.65a16 16 0 0 0 5.92 5.92l1.25-1.25a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.05z"/></svg>,
   },
   {
@@ -18,7 +19,6 @@ const INFO_TILES = [
   },
   {
     label: 'Email', val: 'smgcafeclt@gmail.com',
-    sub: 'We reply within 24 hours',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
   },
 ];
@@ -58,16 +58,32 @@ export default function MapSection() {
             </div>
 
             <div className="mapsec__info-cards">
-              {INFO_TILES.map(t => (
-                <div key={t.label} className="info-tile">
-                  <div className="info-tile__icon" aria-hidden="true">{t.icon}</div>
-                  <div className="info-tile__text">
-                    <span className="info-tile__label">{t.label}</span>
-                    <span className="info-tile__val">{t.val}</span>
-                    <span className="info-tile__sub">{t.sub}</span>
-                  </div>
-                </div>
-              ))}
+              {INFO_TILES.map(t => {
+                const inner = (
+                  <>
+                    <div className="info-tile__icon" aria-hidden="true">{t.icon}</div>
+                    <div className="info-tile__text">
+                      <span className="info-tile__label">{t.label}</span>
+                      <span className="info-tile__val">{t.val}</span>
+                      {t.sub && <span className="info-tile__sub">{t.sub}</span>}
+                    </div>
+                  </>
+                );
+                return t.href ? (
+                  <a
+                    key={t.label}
+                    href={t.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="info-tile info-tile--link"
+                    aria-label={`Contact via WhatsApp: ${t.val}`}
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={t.label} className="info-tile">{inner}</div>
+                );
+              })}
             </div>
 
             <div>
