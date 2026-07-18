@@ -1,0 +1,188 @@
+/* ============================================================
+   LicenseGuard — Loading & Inactive screens
+   ============================================================ */
+
+/* ── Shared tokens ── */
+:root {
+  --lg-bg:       #0a0a0a;
+  --lg-surface:  #141414;
+  --lg-border:   #2a2a2a;
+  --lg-accent:   #1428a0;   /* Samsung blue */
+  --lg-red:      #e53e3e;
+  --lg-text:     #f0f0f0;
+  --lg-muted:    #888;
+}
+
+/* ── Loading screen ── */
+.lg-loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: var(--lg-bg);
+  color: var(--lg-muted);
+  font-size: 0.9rem;
+  z-index: 9999;
+}
+
+.lg-loading__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--lg-border);
+  border-top-color: var(--lg-accent);
+  border-radius: 50%;
+  animation: lg-spin 0.8s linear infinite;
+}
+
+@keyframes lg-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Inactive / Expired screen ── */
+.lg-inactive {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--lg-bg);
+  z-index: 9999;
+  /* subtle grid pattern */
+  background-image:
+    linear-gradient(var(--lg-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lg-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.lg-inactive__card {
+  position: relative;
+  max-width: 460px;
+  width: 100%;
+  background: var(--lg-surface);
+  border: 1px solid var(--lg-border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  animation: lg-card-in 0.45s ease both;
+}
+
+@keyframes lg-card-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Lock icon circle */
+.lg-inactive__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 1.5rem;
+  background: rgba(229, 62, 62, 0.12);
+  border: 1.5px solid rgba(229, 62, 62, 0.35);
+  border-radius: 50%;
+}
+
+.lg-inactive__icon svg {
+  width: 34px;
+  height: 34px;
+  color: var(--lg-red);
+}
+
+/* Title */
+.lg-inactive__title {
+  margin: 0 0 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--lg-text);
+  letter-spacing: -0.02em;
+}
+
+/* Subtitle */
+.lg-inactive__subtitle {
+  margin: 0 0 1.75rem;
+  color: var(--lg-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* Meta table */
+.lg-inactive__meta {
+  margin: 0 0 2rem;
+  border: 1px solid var(--lg-border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.lg-inactive__meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  gap: 1rem;
+}
+
+.lg-inactive__meta-row:not(:last-child) {
+  border-bottom: 1px solid var(--lg-border);
+}
+
+.lg-inactive__meta-row dt {
+  color: var(--lg-muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.lg-inactive__meta-row dd {
+  margin: 0;
+  color: var(--lg-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+.lg-inactive__meta-dd--warn {
+  color: var(--lg-red) !important;
+  font-weight: 700 !important;
+}
+
+/* CTA button */
+.lg-inactive__btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: var(--lg-accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.lg-inactive__btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.lg-inactive__btn:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .lg-inactive__card {
+    padding: 2rem 1.25rem;
+  }
+
+  .lg-inactive__title {
+    font-size: 1.35rem;
+  }
+}
